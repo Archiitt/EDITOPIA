@@ -31,3 +31,16 @@
                             <li ng-if="!canvas.fabric._objects.length" class="text-center"><h4>No layers yet.</h4></li>
                         </ul>
                     </div>
+                </section>
+
+                <section id="history" class="md-whiteframe-z1 panel-hidden">
+                    <h3 ed-toggle-panel-visibility="history"><span>History</span><i class="mdi mdi-expand-less"></i></h3>
+                    <ul class="history-panel list-unstyled" ed-pretty-scrollbar ed-scroll-axis="y">
+                        <li class="history-item panel-item" ng-click="history.load(item)" ng-repeat="item in history.all">
+                            <i class="mdi mdi-{{ item.icon }} main-icon"></i>
+                            {{ spacify(item.name) }}
+                        </li>
+                        <li ng-if="history.all.length === 0" class="text-center"><h4>No history items yet.</h4></li>
+                    </ul>
+                </section>
+            </section>
