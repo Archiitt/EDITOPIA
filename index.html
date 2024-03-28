@@ -31,3 +31,25 @@
                         </ul>
                     </div>
                 </section>
+                <section id="history" class="md-whiteframe-z1 panel-hidden">
+                    <h3 ed-toggle-panel-visibility="history"><span>History</span><i class="mdi mdi-expand-less"></i></h3>
+                    <ul class="history-panel list-unstyled" ed-pretty-scrollbar ed-scroll-axis="y">
+                        <li class="history-item panel-item" ng-click="history.load(item)" ng-repeat="item in history.all">
+                            <i class="mdi mdi-{{ item.icon }} main-icon"></i>
+                            {{ spacify(item.name) }}
+                        </li>
+                        <li ng-if="history.all.length === 0" class="text-center"><h4>No history items yet.</h4></li>
+                    </ul>
+                </section>
+            </section>
+
+            <section ng-hide="!loading" id="spinner">
+                <md-progress-circular class="md-spinner" md-diameter="100" md-mode="indeterminate"></md-progress-circular>
+            </section>
+
+            <section id="left-sidebar" ed-tabs="basics" class="md-whiteframe-z1">
+                <div id="sidebar-toggler" ed-toggle-sidebar>
+                    <md-button class="md-fab md-primary" aria-label="Toggle Sidebar">
+                        <i class="mdi mdi-edit show-icon"></i>
+                        <i class="mdi mdi-close close-icon"></i>
+                    </md-button>
