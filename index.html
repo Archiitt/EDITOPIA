@@ -44,3 +44,57 @@
                     </ul>
                 </section>
             </section>
+
+            <section ng-hide="!loading" id="spinner">
+                <md-progress-circular class="md-spinner" md-diameter="100" md-mode="indeterminate"></md-progress-circular>
+            </section>
+
+            <section id="left-sidebar" ed-tabs="basics" class="md-whiteframe-z1">
+                <div id="sidebar-toggler" ed-toggle-sidebar>
+                    <md-button class="md-fab md-primary" aria-label="Toggle Sidebar">
+                        <i class="mdi mdi-edit show-icon"></i>
+                        <i class="mdi mdi-close close-icon"></i>
+                    </md-button>
+                </div>
+                <div id="navigation-bar">
+                    <div data-activates="basics" class="nav-item">
+                        <i class="mdi mdi-image"></i>
+                        <div class="title">BASICS</div>
+                    </div>
+                    <div data-activates="text" class="nav-item">
+                        <i class="mdi mdi-format-bold"></i>
+                        <div class="title pull-up">TEXT</div>
+                    </div>
+                    <div data-activates="drawing" class="nav-item">
+                        <i class="mdi mdi-brush"></i>
+                        <div class="title">DRAWING</div>
+                    </div>
+                    <div data-activates="filters" class="nav-item">
+                        <i class="mdi mdi-brightness-6"></i>
+                        <div class="title">FILTERS</div>
+                    </div>
+                    <div data-activates="simple-shapes" class="nav-item">
+                        <i class="mdi mdi-panorama-vertical"></i>
+                        <div class="title">SHAPES</div>
+                    </div>
+                    <div data-activates="stickers" class="nav-item">
+                        <i class="mdi mdi-favorite"></i>
+                        <div class="title pull-up">STICKERS</div>
+                    </div>
+                </div>
+                <div id="tabs">
+                    <section id="basics" data-index="1" class="tab">
+                        <h2 class="tab-title">Basics</h2>
+                        <div ng-controller="CropController" class="basics-item">
+                            <div ng-click="cropper.start($event)">
+                                <i class="mdi mdi-crop basics-icon"></i>
+                                <div class="icon-title">Crop</div>
+                            </div>
+
+                            <div data-name="crop" class="actions-menu md-whiteframe-z1" ng-class="activePanel == 'crop' ? 'open' : 'closed'">
+                                <div class="menu-header"><h3>Crop</h3></div>
+                                <div class="row">
+                                    <md-input-container class="col-sm-6">
+                                        <label>Width</label>
+                                        <input type="text" ng-model="width" ng-change="cropzone.setWidth(width)">
+                                    </md-input-container>
