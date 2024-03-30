@@ -97,7 +97,8 @@
                                     <md-input-container class="col-sm-6">
                                         <label>Width</label>
                                         <input type="text" ng-model="width" ng-change="cropzone.setWidth(width)">
-                                   <md-input-container class="col-sm-6">
+                                    </md-input-container>
+                                    <md-input-container class="col-sm-6">
                                         <label>Height</label>
                                         <input type="text" ng-model="height" ng-change="cropzone.setHeight(height)">
                                     </md-input-container>
@@ -132,7 +133,8 @@
                                         <input type="number" ng-model="angle" ng-change="rotate(angle)" min="0" max="360"/>
                                     </div>
                                 </section>
-                               <div class="buttons">
+
+                                <div class="buttons">
                                     <md-button ng-click="cancel()">cancel</md-button>
                                     <md-button ng-click="applyRotation()" class="md-primary md-raised">apply</md-button>
                                 </div>
@@ -159,6 +161,7 @@
                                         <input type="number" ng-model="height" ng-change="aspectToWidth(height)">
                                     </md-input-container>
                                 </div>
+
                                 <md-checkbox ng-model="usePercentages" ng-change="togglePercentages(usePercentages)">Use Percentages</md-checkbox>
                                 <md-checkbox ng-model="constrainProportions">Maintain Aspect Ratio</md-checkbox>
 
