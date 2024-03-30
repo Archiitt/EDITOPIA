@@ -132,3 +132,30 @@
                                         <input type="number" ng-model="angle" ng-change="rotate(angle)" min="0" max="360"/>
                                     </div>
                                 </section>
+                               <div class="buttons">
+                                    <md-button ng-click="cancel()">cancel</md-button>
+                                    <md-button ng-click="applyRotation()" class="md-primary md-raised">apply</md-button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-controller="ResizeController" class="basics-item">
+                            <div ng-click="startResizer($event)">
+                                <i class="mdi mdi-open-with basics-icon"></i>
+                                <div class="icon-title">Resize</div>
+                            </div>
+
+                            <div data-name="resize" class="actions-menu md-whiteframe-z1" ng-class="activePanel == 'resize' ? 'open' : 'closed'">
+                                <div class="menu-header"><h3>Resize</h3></div>
+
+                                <div class="clearfix">
+                                    <md-input-container class="col-sm-6">
+                                        <label>Width</label>
+                                        <input type="number" ng-model="width" ng-change="aspectToHeight(width)">
+                                    </md-input-container>
+
+                                    <md-input-container class="col-sm-6">
+                                        <label>Height</label>
+                                        <input type="number" ng-model="height" ng-change="aspectToWidth(height)">
+                                    </md-input-container>
+                                </div>
