@@ -98,3 +98,102 @@
                                         <label>Width</label>
                                         <input type="text" ng-model="width" ng-change="cropzone.setWidth(width)">
                                     </md-input-container>
+<md-input-container class="col-sm-6">
+                                        <label>Height</label>
+                                        <input type="text" ng-model="height" ng-change="cropzone.setHeight(height)">
+                                    </md-input-container>
+                                </div>
+                                <div class="buttons">
+                                    <md-button ng-click="cropper.stop()">cancel</md-button>
+                                    <md-button ng-click="cropper.crop()" class="md-primary md-raised">crop</md-button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-controller="RotateController" class="basics-item">
+                            <div ng-click="startRotator($event)">
+                                <i class="mdi mdi-rotate-right basics-icon"></i>
+                                <div class="icon-title">Rotate</div>
+                            </div>
+
+                            <div data-name="rotate" class="actions-menu md-whiteframe-z1" ng-class="activePanel == 'rotate' ? 'open' : 'closed'">
+                            <div class="menu-header"><h3>Rotate</h3></div>
+
+                                <div class="rotate-icons">
+                                    <i class="mdi mdi-rotate-left" ng-click="rotateProper(-90)"></i>
+                                    <i class="mdi mdi-rotate-right" ng-click="rotateProper(90)"></i>
+                                </div>
+
+                                <section class="menu-group">
+                                    <div class="md-slider">
+                                        <div class="slider-label">Angle</div>
+                                        <md-slider aria-label="Angle" step="1" ng-model="angle" ng-change="rotate(angle)" min="0" max="360" ></md-slider>
+                                    </div>
+                                    <div class="slider-input">
+                                        <input type="number" ng-model="angle" ng-change="rotate(angle)" min="0" max="360"/>
+                                    </div>
+                                </section>
+
+                                <div class="buttons">
+                                    <md-button ng-click="cancel()">cancel</md-button>
+                                    <md-button ng-click="applyRotation()" class="md-primary md-raised">apply</md-button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-controller="ResizeController" class="basics-item">
+                            <div ng-click="startResizer($event)">
+                                <i class="mdi mdi-open-with basics-icon"></i>
+                                <div class="icon-title">Resize</div>
+                            </div>
+
+                            <div data-name="resize" class="actions-menu md-whiteframe-z1" ng-class="activePanel == 'resize' ? 'open' : 'closed'">
+                                <div class="menu-header"><h3>Resize</h3></div>
+
+                                <div class="clearfix">
+                                    <md-input-container class="col-sm-6">
+                                        <label>Width</label>
+                                        <input type="number" ng-model="width" ng-change="aspectToHeight(width)">
+                                    </md-input-container>
+
+                                    <md-input-container class="col-sm-6">
+                                        <label>Height</label>
+                                        <input type="number" ng-model="height" ng-change="aspectToWidth(height)">
+                                    </md-input-container>
+                                </div>
+
+                                <md-checkbox ng-model="usePercentages" ng-change="togglePercentages(usePercentages)">Use Percentages</md-checkbox>
+                                <md-checkbox ng-model="constrainProportions">Maintain Aspect Ratio</md-checkbox>
+
+                                <div class="buttons margin-top">
+                                    <md-button ng-click="close()">close</md-button>
+                                    <md-button ng-click="apply()" class="md-primary md-raised">resize</md-button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-controller="RoundedCornersController" class="basics-item">
+                            <div ng-click="startRoundedCorners($event)">
+                                <i class="mdi mdi-panorama-wide-angle basics-icon"></i>
+                                <div class="icon-title">Round</div>
+                            </div>
+
+                            <div data-name="round" class="actions-menu md-whiteframe-z1" ng-class="activePanel == 'round' ? 'open' : 'closed'">
+                                <div class="menu-header"><h3>Round</h3></div>
+
+                                <section class="menu-group">
+                                    <div class="md-slider">
+                                        <div class="slider-label">Radius</div>
+                                        <md-slider aria-label="Radius" step="1" ng-model="radius" ng-change="adjustPreview()" min="1" max="350" ></md-slider>
+                                    </div>
+                                    <div class="slider-input">
+                                        <input type="number" ng-model="radius" ng-change="adjustPreview()"/>
+                                    </div>
+                                </section>
+
+                                <div class="buttons">                            
+                                    <md-button ng-click="cancel()">Cancel</md-button>
+                                    <md-button ng-click="apply()" class="md-primary md-raised">Apply</md-button>
+                                </div>
+                            </div>
+                        </div>
