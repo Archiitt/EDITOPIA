@@ -245,3 +245,28 @@
                         </div>
 
                         <div ng-hide="activeTab !== 'text'" class="pagination md-whiteframe-z1" ed-fonts-pagination></div>
+                       <section class="fonts-preview" ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light">
+                            <div class="font" ng-style="{ 'font-family':  font.family }" ng-repeat="font in fonts.paginator.currentItems" ng-click="changeFont(font.family, $event)">{{ font.family }}</div>
+                        </section>
+
+                        <div data-name="text" class="actions-menu wider md-whiteframe-z1" ng-class="isPanelEnabled() ? 'open' : 'closed'">
+                            <div class="menu-header"><h3>Text</h3></div>
+
+                            <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }" ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light">
+                                <div class="md-slider">
+                                    <div class="slider-label">Opacity</div>
+                                    <md-slider aria-label="text opacity" step="0.1" ng-model="opacity" ng-change="text.setProperty('opacity', opacity)" min="0" max="1"></md-slider>
+                                </div>
+                                <div class="slider-input">
+                                    <input min="0.1" max="1" step="0.1" type="number" ng-change="text.setProperty('opacity', opacity)" ng-model="opacity"/>
+                                </div>
+
+                                <div class="md-slider">
+                                    <div class="slider-label">Font Size</div>
+                                    <md-slider aria-label="text size" step="1" ng-change="text.setProperty('fontSize', fontSize)" ng-model="fontSize" min="1" max="100"></md-slider>
+                                </div>
+                                <div class="slider-input">
+                                    <input type="number" ng-change="text.setProperty('fontSize', fontSize)" ng-model="fontSize"/>
+                                </div>
+
+                                <div class="text-styles">
