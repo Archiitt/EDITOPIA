@@ -270,3 +270,26 @@
                                 </div>
 
                                 <div class="text-styles">
+                                    <div class="text-style-toolbar" ed-text-align-buttons>
+                                        <i data-align="left" class="mdi mdi-format-align-left"></i>
+                                        <i data-align="center" class="mdi mdi-format-align-center active"></i>
+                                        <i data-align="right" class="mdi mdi-format-align-right"></i>
+                                    </div>
+                                    <div class="text-style-toolbar text-decoration-buttons" ed-text-decoration-buttons>
+                                        <div data-decoration="underline" class="underline toolbar-btn">U</div>
+                                        <div data-decoration="line-through" class="line-through toolbar-btn">S</div>
+                                        <div data-decoration="overline" class="overline toolbar-btn">O</div>
+                                        <div data-decoration="italic" class="italic toolbar-btn">I</div>
+                                    </div>
+                                </div>
+
+                                <div class="colorpicker">
+                                    <div class="colorpicker-label"><span>Color</span></div>
+                                    <input ed-color-picker="text.setProperty('fill', color)" type="text"/>
+                                </div>
+
+                                <div class="colorpicker">
+                                    <md-checkbox class="md-checkbox" ng-model="enableBackground" ng-change="text.toggleProperty('backgroundColor', enableBackground)" aria-label="Background">Background</md-checkbox>
+                                    <input ed-color-picker="text.setProperty('backgroundColor', color)" ed-color-picker-disabled="{{ !enableBackground }}" type="text"/>
+                                </div>
+
