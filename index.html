@@ -217,9 +217,31 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="basics-item" ng-class="{ disabled: canvas.fabric._objects.length <= 1 }">
                             <div ng-click="canvas.mergeObjects()">
                                 <i class="mdi mdi-merge-type basics-icon"></i>
                                 <div class="icon-title">Merge</div>
                             </div>
+                       </div>
+                    </section>
+                    <section id="text" data-index="2" class="tab" ng-controller="TextController">
+                        <h2 class="tab-title">Pick a Font</h2>
+
+                        <div class="filter-inputs">
+                            <div class="filter-input">
+                                <md-select ng-model="filters.category" ng-change="fonts.paginator.filter(filters)" placeholder="Select a Type">
+                                    <md-option value="serif">Serif</md-option>
+                                    <md-option value="sans-serif">Sans Serif</md-option>
+                                    <md-option value="display">Display</md-option>
+                                    <md-option value="handwriting">Handwriting</md-option>
+                                    <md-option value="monospace">Monospace</md-option>
+                                </md-select>
+                            </div>
+
+                            <md-input-container class="filter-input">
+                                <label>Search</label>
+                                <input type="text" ng-model="filters.family" ng-change="fonts.paginator.filter(filters)">
+                            </md-input-container>
+                        </div>
+
+                        <div ng-hide="activeTab !== 'text'" class="pagination md-whiteframe-z1" ed-fonts-pagination></div>
