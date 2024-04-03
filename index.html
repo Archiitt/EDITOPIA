@@ -346,3 +346,29 @@
 
                                 <div class="heading-with-switcher">
                                     <h3>Shadow</h3>
+                                    <md-switch class="md-switch" ng-model="drawing.params.enableShadow" ng-change="drawing.toggleShadow(drawing.params.enableShadow)" aria-label="Enable Shadow"></md-switch>
+                                </div>
+
+                                <div class="md-slider">
+                                    <div class="slider-label"><span>Blur</span></div>
+                                    <md-slider aria-label="shadow blur" ng-disabled="!drawing.params.enableShadow" step="1" ng-model="drawing.params.shadowBlur" ng-change="drawing.setShadowProperty('blur', drawing.params.shadowBlur)" min="1" max="100"></md-slider>
+                                </div>
+                                <div class="slider-input">
+                                    <input type="number" ng-change="drawing.setShadowProperty('blur', drawing.params.shadowBlur)" ng-disabled="!drawing.params.enableShadow" ng-model="drawing.params.shadowBlur"/>
+                                </div>
+
+                                <div class="md-slider">
+                                    <div class="slider-label"><span>Offset X</span></div>
+                                    <md-slider ng-disabled="!drawing.params.enableShadow" aria-label="shadow blur" step="1" ng-model="drawing.params.shadowOffsetX" ng-change="drawing.setShadowProperty('offsetX', drawing.params.shadowOffsetX)" min="1" max="100"></md-slider>
+                                </div>
+                                <div class="slider-input">
+                                    <input type="number" ng-change="drawing.setShadowProperty('offsetX', drawing.params.shadowOffsetX)" ng-disabled="!drawing.params.enableShadow" min="1" ng-model="drawing.params.shadowOffsetX"/>
+                                </div>
+
+                                <div class="md-slider">
+                                    <div class="slider-label"><span>Offset Y</span></div>
+                                    <md-slider ng-disabled="!drawing.params.enableShadow" aria-label="shadow blur" step="1" ng-model="drawing.params.shadowOffsetY" ng-change="drawing.setShadowProperty('offsetY', drawing.params.shadowOffsetY)" min="1" max="100"></md-slider>
+                                </div>
+                                <div class="slider-input">
+                                    <input type="number" ng-change="drawing.setShadowProperty('offsetY', drawing.params.shadowOffsetY)" ng-disabled="!drawing.params.enableShadow" min="1" ng-model="drawing.params.shadowOffsetY"/>
+                                </div>
