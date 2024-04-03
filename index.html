@@ -436,3 +436,35 @@
                                         </div>
                                     </section>
                                 </div>
+                            </section>
+                        </div>
+                    </section>
+                    <section id="simple-shapes" class="tab" data-index="5" ng-controller="SimpleShapesController">
+                        <h2 class="tab-title">Pick a Shape</h2>
+
+                        <div class="shapes-list">
+                            <div class="shape" data-name="{{ shape.name }}" ng-repeat="shape in shapes.available" ng-click="shapes.addToCanvas(shape)">
+                                <div class="shape-image" id="{{ shape.name }}"><div class="css-shape"></div></div>
+                                <div class="shape-name">{{ shape.displayName || shape.name }}</div>
+                            </div>
+                        </div>
+
+                        <div class="actions-menu md-whiteframe-z1" ng-class="isPanelEnabled() ? 'open' : 'closed'">
+                            <div class="menu-header"><h3>{{ shapes.selected.displayName || shapes.selected.name }}</h3></div>
+
+                            <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }" ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light">
+                                <section id="object-fills">
+                                    <div class="fill-activator">
+                                        <div class="fill-activator-label">Image</div>
+                                        <button class="fill-activator-button image-activator" ng-click="openBottomSheet('image')"></button>
+                                    </div>
+
+                                    <div class="fill-activator">
+                                        <div class="fill-activator-label">Gradient</div>
+                                        <button class="fill-activator-button gradient-activator" ng-click="openBottomSheet('gradient')"></button>
+                                    </div>
+
+                                    <div class="fill-activator">
+                                        <div class="fill-activator-label">Color</div>
+                                        <input ed-discrete start-color="{{ shapes.selected.options.main.fill.current }}" ng-model="shapes.selected.options.main.fill.current" ed-color-picker="shapes.applyValue('main', shapes.selected.name, 'fill', color)"  type="text"/>
+                                    </div>
