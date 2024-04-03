@@ -417,3 +417,22 @@
                                                     max="{{ value.max ? value.max : 250 }}"
                                                     ></md-slider>
                                         </div>
+                                  <div class="slider-input">
+                                            <input ng-if="!value.colorpicker" type="number" ng-change="filters.applyValue(filters.lastAppliedFilter.name, key, filters.lastAppliedFilter.options[key].current)" ng-model="filters.lastAppliedFilter.options[key].current"/>
+                                        </div>
+                                    </section>
+
+                                    <section ng-if="value.colorpicker" class="colorpicker">
+                                        <div class="colorpicker-label"><span>{{ key }}</span></div>
+                                        <input ed-discrete ng-model="filters.lastAppliedFilter.options[key].current" start-color="{{ filters.lastAppliedFilter.options[key].current }}" ed-color-picker="filters.applyValue(filters.lastAppliedFilter.name, key, color)" type="text"/>
+                                    </section>
+
+                                    <section ng-if="value.select">
+                                        <div class="col-sm-8 pull-down">{{ key }}</div>
+                                        <div class="col-sm-4 no-padding">
+                                            <select class="form-control" ng-model="filters.lastAppliedFilter.options[key].current" ng-change="filters.applyValue(filters.lastAppliedFilter.name, key, filters.lastAppliedFilter.options[key].current)">
+                                                <option ng-repeat="mode in filters.lastAppliedFilter.options[key].available" value="{{ mode }}">{{ mode }}</option>
+                                            </select>
+                                        </div>
+                                    </section>
+                                </div>
