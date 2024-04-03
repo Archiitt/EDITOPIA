@@ -398,3 +398,22 @@
                                 <figcaption>{{ filter.displayName || filter.name }}</figcaption>
                             </figure>
                         </div>
+                       <div class="actions-menu md-whiteframe-z1" ng-class="filters.lastAppliedFilter.options ? 'open' : 'closed'">
+                            <div class="menu-header"><h3>{{ filters.lastAppliedFilter.name }}</h3></div>
+
+                            <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }" ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light">
+                                <div ng-repeat="(key,value) in filters.lastAppliedFilter.options">
+
+                                    <section ng-if="!value.colorpicker && !value.select">
+                                        <div class="md-slider">
+                                            <div class="slider-label">{{ key == filters.lastAppliedFilter.name ? 'amount' : key }}</div>
+                                            <md-slider
+                                                    md-discrete
+                                                    aria-label="{{ key }}"
+                                                    step="{{ value.step ? value.step : 1 }}"
+                                                    ng-model="filters.lastAppliedFilter.options[key].current"
+                                                    ng-change="filters.applyValue(filters.lastAppliedFilter.name, key, filters.lastAppliedFilter.options[key].current)"
+                                                    min="{{ value.min ? value.min : 1 }}"
+                                                    max="{{ value.max ? value.max : 250 }}"
+                                                    ></md-slider>
+                                        </div>
