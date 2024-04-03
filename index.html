@@ -295,3 +295,54 @@
                                     <md-checkbox class="md-checkbox" ng-model="enableBackground" ng-change="text.toggleProperty('backgroundColor', enableBackground)" aria-label="Background">Background</md-checkbox>
                                     <input ed-color-picker="text.setProperty('backgroundColor', color)" ed-color-picker-disabled="{{ !enableBackground }}" type="text"/>
                                 </div>
+                                <div class="colorpicker">
+                                    <md-checkbox class="md-checkbox" ng-model="enableOutline" ng-change="text.toggleProperty('stroke', enableOutline)" aria-label="Outline">Outline</md-checkbox>
+                                    <input ed-color-picker-disabled="{{ !enableOutline }}" ed-color-picker="text.setProperty('stroke', color)" type="text"/>
+                                </div>
+
+                                <div class="md-inputs">
+                                    <md-input-container>
+                                        <label>Line Height</label>
+                                        <input type="number" min="1" max="100" ng-model="lineHeight" ng-change="text.setProperty('lineHeight', lineHeight)">
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>Outline Width</label>
+                                        <input ng-disabled="!enableOutline" type="number" min="1" max="100" ng-model="strokeWidth" ng-change="text.setProperty('strokeWidth', strokeWidth)">
+                                    </md-input-container>
+                                </div>
+
+                                <div class="buttons">
+                                    <md-button ng-click="finishAddingTextToCanvas()" class="md-primary md-raised">Save</md-button>
+                                    <md-button ng-click="cancelAddingTextToCanvas()" class="md-raised">Cancel</md-button>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+                    <section id="drawing" class="tab" data-index="3" ng-controller="DrawingController">
+                        <h2 class="tab-title">Pick a Brush</h2>
+                        <div id="brushes">
+                            <div ng-repeat="brush in drawing.availableBrushes" ng-class="{ active: drawing.activeBrushName == brush }" class="brush" ng-click="changeBrush(brush, $event)">
+                                <img title="{{ brush }}" class="img-responsive" ng-src="assets/images/brushes/{{brush}}.png"/>
+                            </div>
+                        </div>
+
+                        <div data-name="drawing" class="actions-menu wider md-whiteframe-z1" ng-class="activePanel == 'drawing' ? 'open' : 'closed'">
+                            <div class="menu-header"><h3>Brush</h3></div>
+
+                            <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }" ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light">
+                                <div class="md-slider">
+                                    <div class="slider-label">Brush Thickness</div>
+                                    <md-slider aria-label="brush thickness" step="1" ng-model="drawing.params.brushWidth" ng-change="drawing.setProperty('width', drawing.params.brushWidth)" min="1" max="100"></md-slider>
+                                </div>
+                                <div class="slider-input">
+                                    <input type="number" ng-change="drawing.setProperty('width', drawing.params.brushWidth)" ng-model="drawing.params.brushWidth"/>
+                                </div>
+
+
+                                <div class="colorpicker">
+                                    <div class="colorpicker-label"><span>Color</span></div>
+                                    <input ng-model="drawing.params.brushColor" ed-color-picker="drawing.setProperty('color', color)" type="text"/>
+                                </div>
+
+                                <div class="heading-with-switcher">
+                                    <h3>Shadow</h3>
