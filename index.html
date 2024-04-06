@@ -571,3 +571,24 @@
                     <div ed-ie-slider-fix></div>
                 </section>
             </div>
+                       <script src="assets/js/scripts.min.js?v23"></script>
+
+            <script type="application/ng-template" id="gradient-sheet-template">
+                <md-bottom-sheet class="bottom-sheet gradients-sheet">
+                    <div class="items-list" ed-pretty-scrollbar>
+                        <div ng-repeat="g in shapes.gradients" ng-style="{background: 'url(assets/images/gradients/'+($index+1)+'.png)'}" ng-click="shapes.fillWithGradient($index+1)" class="item md-whiteframe-z1"></div>
+                    </div>
+                </md-bottom-sheet>
+            </script>
+
+            <script type="application/ng-template" id="image-sheet-template">
+                <md-bottom-sheet class="bottom-sheet images-sheet">
+                    <div class="upload-new" ng-click="showDialog($event)">
+                        <i class="mdi mdi-cloud-upload"></i>
+                        <span class="icon-label">Upload</span>
+                    </div>
+                    <div class="items-list" ed-pretty-scrollbar>
+                        <div ng-repeat="t in shapes.textures track by $index" ng-style="{background: 'url(assets/images/textures/'+$index+'.png)'}" ng-click="shapes.fillWithImage('assets/images/textures/'+$index+'.png')" class="item md-whiteframe-z1"></div>
+                    </div>
+                </md-bottom-sheet>
+            </script>
