@@ -544,3 +544,30 @@
                         </div>
                     </section>
                 </div>
+           </section>
+
+            <section id="viewport">
+
+                <section id="top-panel" class="md-whiteframe-z1" ng-controller="TopPanelController">
+                    <md-button ng-click="openUploadDialog($event)" ng-if="!getParam('hideOpenButton')">Open</md-button>
+                    <md-button ng-class="{ inactive: !historyPanelOpen }" ng-click="toggleRightPanel('history', $event)">History</md-button>
+                    <md-button ng-class="{ inactive: !objectsPanelOpen }" ng-click="toggleRightPanel('objects', $event)">Layers</md-button>
+                    <md-button ng-click="openSaveDialog($event)" class="md-primary md-raised">Save</md-button>
+                </section>
+
+                <canvas ng-show="started" id="canvas" class="md-whiteframe-z2"></canvas>
+            </section>
+
+            <div id="bottom-bar" ng-controller="ZoomController">
+                <section class="zoom-container md-whiteframe-z1">
+                    <div class="current-zoom">{{ getCurrentZoom() }}%</div>
+                    <div class="zoom-slider">
+                        <md-slider aria-label="zoom" step="1" ng-model="zoom" ng-change="doZoom()"  min="{{ minScale }}" max="{{ maxScale }}"></md-slider>
+                    </div>
+                    <div class="action-icons">
+                        <i ng-click="canvas.fitToScreen()" class="mdi mdi-filter-center-focus fit-to-screen"><md-tooltip md-delay="200">Fit to screen</md-tooltip></i>
+                        <i ng-click="canvas.zoom(1)" class="mdi mdi-fullscreen original-size"><md-tooltip md-delay="200">Original size</md-tooltip></i>
+                    </div>
+                    <div ed-ie-slider-fix></div>
+                </section>
+            </div>
