@@ -608,3 +608,28 @@
                     </label>
                 </md-dialog>
             </script>
+                        <script type="application/ng-template" id="save-image-dialog">
+                <md-dialog class="upload-file-dialog save-dialog">
+                    <md-input-container>
+                        <label>File Name</label>
+                        <input type="text" ng-model="imageName">
+                    </md-input-container>
+
+                    <md-radio-group ng-model="imageType">
+                        <md-radio-button value="jpeg">JPEG</md-radio-button>
+                        <md-radio-button value="png">PNG</md-radio-button>
+                        <md-radio-button value="json">JSON</md-radio-button>
+                    </md-radio-group>
+
+                    <div ng-if="imageType === 'jpeg'">
+                        <div class="slider-label">Quality {{ imageQuality }}</div>
+                        <md-slider aria-label="Angle" md-discrete ng-model="imageQuality" step="1" min="1" max="10" ></md-slider>
+                    </div>
+
+                    <p ng-if="imageType === 'json'">This will download a file with current pixie editor state so you can load it into pixie later.</p>
+
+                    <md-button ng-click="saveImage($event)" class="md-raised md-primary">Save</md-button>
+
+                    <div class="demo-alert" ng-if="isDemo">Image saving is disabled on demo site.</div>
+                </md-dialog>
+            </script>
