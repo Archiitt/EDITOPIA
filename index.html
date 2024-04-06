@@ -295,6 +295,8 @@
                                     <md-checkbox class="md-checkbox" ng-model="enableBackground" ng-change="text.toggleProperty('backgroundColor', enableBackground)" aria-label="Background">Background</md-checkbox>
                                     <input ed-color-picker="text.setProperty('backgroundColor', color)" ed-color-picker-disabled="{{ !enableBackground }}" type="text"/>
                                 </div>
+
+
                                 <div class="colorpicker">
                                     <md-checkbox class="md-checkbox" ng-model="enableOutline" ng-change="text.toggleProperty('stroke', enableOutline)" aria-label="Outline">Outline</md-checkbox>
                                     <input ed-color-picker-disabled="{{ !enableOutline }}" ed-color-picker="text.setProperty('stroke', color)" type="text"/>
@@ -372,7 +374,8 @@
                                 <div class="slider-input">
                                     <input type="number" ng-change="drawing.setShadowProperty('offsetY', drawing.params.shadowOffsetY)" ng-disabled="!drawing.params.enableShadow" min="1" ng-model="drawing.params.shadowOffsetY"/>
                                 </div>
-                               <div class="colorpicker">
+
+                                <div class="colorpicker">
                                     <div class="colorpicker-label"><span>Color</span></div>
                                     <input ng-disabled="!drawing.params.enableShadow" ng-model="drawing.params.shadowColor" start-color="{{ drawing.params.shadowColor }}" ed-color-picker="drawing.setShadowProperty('color', color)" type="text"/>
                                 </div>
@@ -398,7 +401,8 @@
                                 <figcaption>{{ filter.displayName || filter.name }}</figcaption>
                             </figure>
                         </div>
-                       <div class="actions-menu md-whiteframe-z1" ng-class="filters.lastAppliedFilter.options ? 'open' : 'closed'">
+
+                        <div class="actions-menu md-whiteframe-z1" ng-class="filters.lastAppliedFilter.options ? 'open' : 'closed'">
                             <div class="menu-header"><h3>{{ filters.lastAppliedFilter.name }}</h3></div>
 
                             <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }" ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light">
@@ -417,7 +421,7 @@
                                                     max="{{ value.max ? value.max : 250 }}"
                                                     ></md-slider>
                                         </div>
-                                  <div class="slider-input">
+                                        <div class="slider-input">
                                             <input ng-if="!value.colorpicker" type="number" ng-change="filters.applyValue(filters.lastAppliedFilter.name, key, filters.lastAppliedFilter.options[key].current)" ng-model="filters.lastAppliedFilter.options[key].current"/>
                                         </div>
                                     </section>
@@ -468,10 +472,6 @@
                                         <div class="fill-activator-label">Color</div>
                                         <input ed-discrete start-color="{{ shapes.selected.options.main.fill.current }}" ng-model="shapes.selected.options.main.fill.current" ed-color-picker="shapes.applyValue('main', shapes.selected.name, 'fill', color)"  type="text"/>
                                     </div>
-<div class="fill-activator">
-                                        <div class="fill-activator-label">Color</div>
-                                        <input ed-discrete start-color="{{ shapes.selected.options.main.fill.current }}" ng-model="shapes.selected.options.main.fill.current" ed-color-picker="shapes.applyValue('main', shapes.selected.name, 'fill', color)"  type="text"/>
-                                    </div>
 
                                 </section>
 
@@ -498,7 +498,7 @@
                                                         max="{{ option.max ? option.max : 250 }}"
                                                         ng-disabled="!group.enabled"
                                                         ></md-slider>
-                                         </div>
+                                            </div>
                                             <div class="slider-input">
                                                 <input type="number" ng-change="shapes.applyValue(group.name, shapes.selected.name, optionName, shapes.selected.options[group.name][optionName].current)" ng-disabled="!group.enabled" ng-model="shapes.selected.options[group.name][optionName].current"/>
                                             </div>
@@ -514,6 +514,7 @@
                             </section>
                         </div>
                     </section>
+
                     <section id="stickers" class="tab" data-index="6" ng-controller="StickersController">
 
                         <div data-name="stickers" class="actions-menu md-whiteframe-z1" ng-class="isPanelEnabled() ? 'open' : 'closed'">
@@ -544,7 +545,7 @@
                         </div>
                     </section>
                 </div>
-           </section>
+            </section>
 
             <section id="viewport">
 
@@ -571,7 +572,8 @@
                     <div ed-ie-slider-fix></div>
                 </section>
             </div>
-                       <script src="assets/js/scripts.min.js?v23"></script>
+
+            <script src="assets/js/scripts.min.js?v23"></script>
 
             <script type="application/ng-template" id="gradient-sheet-template">
                 <md-bottom-sheet class="bottom-sheet gradients-sheet">
@@ -592,7 +594,8 @@
                     </div>
                 </md-bottom-sheet>
             </script>
-          <script type="application/ng-template" id="texture-upload-dialog-template">
+
+            <script type="application/ng-template" id="texture-upload-dialog-template">
                 <md-dialog class="upload-file-dialog">
                     <md-input-container>
                         <label>Image URL</label>
@@ -608,7 +611,8 @@
                     </label>
                 </md-dialog>
             </script>
-                        <script type="application/ng-template" id="save-image-dialog">
+
+            <script type="application/ng-template" id="save-image-dialog">
                 <md-dialog class="upload-file-dialog save-dialog">
                     <md-input-container>
                         <label>File Name</label>
