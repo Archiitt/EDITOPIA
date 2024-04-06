@@ -498,3 +498,19 @@
                                                         max="{{ option.max ? option.max : 250 }}"
                                                         ng-disabled="!group.enabled"
                                                         ></md-slider>
+                                         </div>
+                                            <div class="slider-input">
+                                                <input type="number" ng-change="shapes.applyValue(group.name, shapes.selected.name, optionName, shapes.selected.options[group.name][optionName].current)" ng-disabled="!group.enabled" ng-model="shapes.selected.options[group.name][optionName].current"/>
+                                            </div>
+                                        </section>
+
+                                        <section ng-if="option.type === 'colorpicker' && !option.hidden" class="colorpicker">
+                                            <div class="colorpicker-label"><span>{{ option.displayName || optionName }}</span></div>
+                                            <input start-color="{{ option.current }}" ed-discrete ng-disabled="!group.enabled"
+                                                   ng-model="shapes.selected.options[group.name][optionName].current" ed-color-picker="shapes.applyValue(group.name, shapes.selected.name, optionName, color)"  type="text"/>
+                                        </section>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
