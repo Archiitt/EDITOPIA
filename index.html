@@ -468,3 +468,33 @@
                                         <div class="fill-activator-label">Color</div>
                                         <input ed-discrete start-color="{{ shapes.selected.options.main.fill.current }}" ng-model="shapes.selected.options.main.fill.current" ed-color-picker="shapes.applyValue('main', shapes.selected.name, 'fill', color)"  type="text"/>
                                     </div>
+<div class="fill-activator">
+                                        <div class="fill-activator-label">Color</div>
+                                        <input ed-discrete start-color="{{ shapes.selected.options.main.fill.current }}" ng-model="shapes.selected.options.main.fill.current" ed-color-picker="shapes.applyValue('main', shapes.selected.name, 'fill', color)"  type="text"/>
+                                    </div>
+
+                                </section>
+
+                                <div ng-repeat="group in shapes.selected.options | orderOptions" class="clearfix">
+
+                                    <div ng-if="group.name !== 'main'" class="heading-with-switcher">
+                                        <h3>{{ group.name }}</h3>
+                                        <md-switch class="md-switch" ng-model="shapes.selected.options[group.name].enabled" ng-change="shapes[group.onToggle](shapes.selected.name, shapes.selected.options[group.name].enabled)" aria-label="Toggle {{ group.name }}"></md-switch>
+                                    </div>
+
+                                    <div ng-repeat="(optionName, option) in group">
+
+                                        <section ng-if="option.type === 'slider'">
+                                            <div class="md-slider">
+                                                <div class="slider-label">{{ option.displayName || optionName }}</div>
+
+                                                <md-slider
+                                                        md-discrete
+                                                        aria-label="{{ optionName }}"
+                                                        step="{{ option.step ? option.step : 1 }}"
+                                                        ng-model="shapes.selected.options[group.name][optionName].current"
+                                                        ng-change="shapes.applyValue(group.name, shapes.selected.name, optionName, shapes.selected.options[group.name][optionName].current)"
+                                                        min="{{ option.min ? option.min : 1 }}"
+                                                        max="{{ option.max ? option.max : 250 }}"
+                                                        ng-disabled="!group.enabled"
+                                                        ></md-slider>
