@@ -644,3 +644,27 @@
                             <label>Image URL</label>
                             <input type="text" ng-model="openImageUrl" ng-change="showImagePreview(openImageUrl)" ng-model-options="{ debounce: 500 }">
                         </md-input-container>
+                       <h2><span>OR</span></h2>
+
+                        <label class="pretty-upload">
+                            <input type="file" ed-file-uploader="showImagePreview"/>
+                            <i class="mdi mdi-cloud-upload"></i>
+                            <span class="upload-button-label">Upload From Computer</span>
+                        </label>
+
+                        <h2><span>OR</span></h2>
+
+                        <div class="buttons" ng-show="!canOpenImage">
+                            <md-button ng-click="openImageMode = 'create'" class="md-primary">Create New</md-button>
+                            <md-button ng-click="openSampleImage()">Sample</md-button>
+                        </div>
+
+                        <div ng-show="canOpenImage">
+                            <div class="img-preview"></div>
+
+                            <div class="buttons">
+                                <md-button ng-click="openImage()" class="md-primary md-raised">Open</md-button>
+                                <md-button ng-click="closeUploadDialog()" class="md-raised">Close</md-button>
+                            </div>
+                        </div>
+                    </div>
