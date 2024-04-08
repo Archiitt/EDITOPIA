@@ -668,3 +668,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="new-canvas" ng-show="openImageMode === 'create'">
+                        <md-input-container>
+                            <label>Width</label>
+                            <input min="1" max="5000" type="number" ng-model="canvasWidth">
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label>Height</label>
+                            <input min="1" max="5000" type="number" ng-model="canvasHeight">
+                        </md-input-container>
+
+                        <div class="buttons">
+                            <md-button ng-click="openImageMode = 'open'" class="md-raised">Cancel</md-button>
+                            <md-button ng-click="createNewCanvas(canvasWidth, canvasHeight)" class="md-primary md-raised">Create</md-button>
+                        </div>
+                    </div>
+                </md-dialog>
+            </script>
