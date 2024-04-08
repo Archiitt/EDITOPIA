@@ -686,3 +686,27 @@
                     </div>
                 </md-dialog>
             </script>
+            <script type="text/ng-template" id="modals/polygon.html">
+                <md-dialog class="md-modal">
+                    <div class="md-modal-header">
+                        <h1>Polygon Instructions</h1>
+                        <div ng-click="closeModal()" class="md-close-modal"><i class="mdi mdi-close"></i></div>
+                    </div>
+
+                    <ol>
+                        <li>Click on the canvas where you want to start the polygon edge.</li>
+                        <li>Drag your mouse.</li>
+                        <li>Click again where you want to end the edge.</li>
+                        <li>Repeat to add more edges.</li>
+                        <li>Hit escape or click anywhere outside of canvas to finish.</li>
+                    </ol>
+
+                    <div class="buttons">
+                        <md-button class="md-primary md-raised" ng-click="closeModal()">got it</md-button>
+                    </div>
+                </md-dialog>
+        </script>
+        </div>
+    </body>
+
+</html>
