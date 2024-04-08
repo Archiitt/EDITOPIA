@@ -637,3 +637,10 @@
                     <div class="demo-alert" ng-if="isDemo">Image saving is disabled on demo site.</div>
                 </md-dialog>
             </script>
+            <script type="application/ng-template" id="main-image-upload-dialog-template">
+                <md-dialog class="upload-file-dialog">
+                    <div ng-show="openImageMode === 'open'">
+                        <md-input-container>
+                            <label>Image URL</label>
+                            <input type="text" ng-model="openImageUrl" ng-change="showImagePreview(openImageUrl)" ng-model-options="{ debounce: 500 }">
+                        </md-input-container>
